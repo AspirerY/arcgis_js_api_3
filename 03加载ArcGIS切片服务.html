@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>02加载ArcGIS动态服务</title>
+        <title>03加载ArcGIS切片服务</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://js.arcgis.com/3.45/esri/css/esri.css">
         <script src="https://js.arcgis.com/3.45/"></script>
@@ -15,7 +15,7 @@
             #map {
                 height: 100%;
             }
-        </style>
+</style>
     </head>
     <body>
         <div id="map"></div>
@@ -23,15 +23,14 @@
     <script>
         require([
             "esri/map",
-            "esri/layers/ArcGISDynamicMapServiceLayer"
+            "esri/layers/ArcGISTiledMapServiceLayer"
         ],function(
             Map,
-            ArcGISDynamicMapServiceLayer
+            ArcGISTiledMapServiceLayer
         ) {
             var map = new Map("map");
-            var layer = new ArcGISDynamicMapServiceLayer("https://47.120.49.152/arcgis/rest/services/arcgis_js_api/长沙幼儿园分布/MapServer");
-            layer.setVisibleLayers([0]);
-            map.addLayer(layer);
+            var tiledLayer = new ArcGISTiledMapServiceLayer("https://services.arcgisonline.com/arcgis/rest/services/World_Physical_Map/MapServer");
+            map.addLayer(tiledLayer);
         })
     </script>
 </html>
